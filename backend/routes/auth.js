@@ -11,15 +11,15 @@ router.post("/signup-google",signup.signUpWithGoogle);
 router.put("/login-username",signin.signInWithUsername);
 router.put("/login-google",signin.signInWithGoogle)
 
-router.post("/sendRecMails/:userId",auth,mail.recurringMail);
-router.post("/sendWekMails/:userId",auth,mail.scheduleEveryWeek);
-router.post("/sendMonMails/:userId",auth,mail.scheduleEveryMonth);
-router.post("/sendYeaMails/:userId",auth,mail.scheduleEveryYear);
+router.post("/sendRecMails/:userId",mail.recurringMail);
+router.post("/sendWekMails/:userId",mail.scheduleEveryWeek);
+router.post("/sendMonMails/:userId",mail.scheduleEveryMonth);
+router.post("/sendYeaMails/:userId",mail.scheduleEveryYear);
 
-router.get("/getRecurringMails/:userId",auth,mail.getRecurringMails);
-router.get("/getWeeklyMails/:userId",auth,mail.getWeeklyMails);
-router.get("/getMonthlyMails/:userId",auth,mail.getMonthlyMails);
-router.get("/getYearlyMails/:userId",auth,mail.getYearlyMails);
+router.get("/getRecurringMails/:userId",mail.getRecurringMails);
+router.get("/getWeeklyMails/:userId",mail.getWeeklyMails);
+router.get("/getMonthlyMails/:userId",mail.getMonthlyMails);
+router.get("/getYearlyMails/:userId",mail.getYearlyMails);
 
 
 
