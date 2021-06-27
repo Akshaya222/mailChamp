@@ -6,41 +6,19 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import Input from "@material-ui/core/Input";
 import {navigate,Link} from "@reach/router";
-
-import GoogleButton from "react-google-button";
-import { GoogleLogin } from 'react-google-login';
 import axios from "axios";
 import "./styles.css";
+import { GoogleLogin } from 'react-google-login';
 
 function LoginForm() {
-    const [name,setName]=useState("");
-    const [email,setEmail]=useState("");
-    const [password,setPassword]=useState("");
-    const [err,setErr]=useState("");
-    const [msg,setMsg]=useState("");
-
-    const handleSubmit=(e)=>{
-      e.preventDefault();
-      axios.post("http://localhost:3007/auth/signup-username",{
-          name,username:email,password
-      }).then((res)=>{
-          setMsg("");
-          setErr("");
-          setMsg(res.data.message);
-          sessionStorage.setItem("user",JSON.stringify(res.data.data))
-          setTimeout(()=>{navigate("/")},3000)
-          console.log(res.data.message)
-      }).catch((err)=>{
-          setMsg("");
-          setErr("");
-          setErr(err.response.data.message)
-          console.log(err.response.data.message);
-      })
-  }
+  const [email,setEmail]=useState("");
+  const [password,setPassword]=useState("");
+  const [err,setErr]=useState("");
+  const [msg,setMsg]=useState("");
 
   const responseGoogle=(response)=>{
-    if(response){
-      axios.post("http://localhost:3007/auth/signup-google",{
+    console.log("from google",response)
+    axios.put("https://nodejs-mailchamp-2233.herokuapp.com/auth/login-google",{
         name:response.profileObj.name,username:response.profileObj.email,googleId:response.googleId
     }).then((res)=>{
       setMsg("");
@@ -55,39 +33,48 @@ function LoginForm() {
       setErr(err.response.data.message)
       console.log(err.response.data.message);
   })
-    }
 }
-  
+
+const handleSubmit=(e)=>{
+  e.preventDefault();
+  axios.put("https://nodejs-mailchamp-2233.herokuapp.com/auth/login-username",{
+     username:email,password
+  }).then((res)=>{
+    setMsg("");
+    setErr("");
+    sessionStorage.setItem("user",JSON.stringify(res.data.data))
+    setMsg(res.data.message);
+    setTimeout(()=>{navigate("/")},3000)
+    console.log(res.data.message)
+}).catch((err)=>{
+    setMsg("");
+    setErr("");
+    setErr(err.response.data.message)
+    console.log(err.response.data.message);
+})
+}
 
   return (
-    <div className="card-container">
+   <div className="card-container">
     <div className="card">
+      {/* {console.log(state)} */}
+
       <Card className="card-body">
         <CardContent>
-          <Typography variant="h4">Sign Up</Typography>
+          <Typography variant="h4">Login</Typography>
           <br />
           <Typography variant="h6" align="center" style={{color:'green',margin:msg?'3px 0px':null}}>{msg?msg:null}</Typography>
           <Typography variant="h6" align="center" style={{color:'red',margin:err?'3px 0px':null}}>{err?err:null}</Typography>
           <form onSubmit={handleSubmit}>
             <Input
-              name="name"
+              name="username"
               type="text"
-              placeholder="Full Name"
-              value={name}
-              onChange={(e)=>setName(e.target.value)} 
-            />
-            <br />
-            <br />
-            <Input
-              onChange={(e)=>setEmail(e.target.value)}
-              name="email"
-              type="email"
-              placeholder="Email address"
+              placeholder="Username"
               value={email}
+              onChange={(e)=>setEmail(e.target.value)}
             />
             <br />
             <br />
-
             <Input
               name="password"
               type="password"
@@ -104,8 +91,9 @@ function LoginForm() {
                 variant="contained"
                 color="secondary"
                 size="small"
+                // onSubmit={handleSubmit}
               >
-                Sign up
+                Login
               </Button>
             </CardActions>
           </form>
@@ -114,6 +102,7 @@ function LoginForm() {
           </Typography>
           <br />
           <br />
+
           <GoogleLogin
     cssClass="googleBtn"
     type="light"
@@ -122,11 +111,10 @@ function LoginForm() {
     onSuccess={responseGoogle}
     onFailure={responseGoogle}
     cookiePolicy={'single_host_origin'}/>
-
           <Typography className="signup" color="textSecondary">
-            Already have an account?
+            Don't have an account?
             <br />
-            <Link to="/login"> Login </Link>
+            <Link to="/register"> Sign Up </Link>
           </Typography>
         </CardContent>
       </Card>

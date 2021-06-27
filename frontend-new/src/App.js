@@ -1,14 +1,23 @@
-import React,{useState}from 'react';
+import React,{useState,useEffect}from 'react';
 import { Router } from "@reach/router";
 import Home from './Home';
 import History from './History';
 import Register from "./Register";
 import Login from './Login';
-import FutureMails from './components/FutureMails';
+import FutureMails from './FutureMails';
+import {navigate} from '@reach/router';
 
 
 function App() {
  
+  useEffect(()=>{
+    if(!sessionStorage.getItem("user")){
+       navigate("/login");
+    }
+ },[])
+
+
+
   return (
     
     <div>

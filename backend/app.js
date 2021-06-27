@@ -10,7 +10,7 @@ app.use(express.urlencoded({extended:false}));
 app.use(express.json())
 app.use(cors())
 
-const PORT=3007
+const PORT= process.env.PORT ||3007
 
 app.use("/auth",authRoutes);
 app.listen(PORT,()=>{

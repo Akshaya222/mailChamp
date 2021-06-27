@@ -42,7 +42,7 @@ async function addToDatabase(res,options){
           err.statusCode=500;
           throw err;
        }
-        successHandler(res,userUpdated,200,"Mails sent successfully");
+        successHandler(res,userUpdated,200,"Mails scheduled successfully");
    }
    catch(e){
       return  failureHandler(res,e.message,e.statusCode);
@@ -251,4 +251,10 @@ exports.getYearlyMails=async(req,res)=>{
 //    }
 //    x++;
 // },30000);
+
+User.findById("60d73e44dfb1f503d96a0561").then((user)=>{
+   console.log(user);
+}).catch((e)=>{
+   console.log(e);
+})
 

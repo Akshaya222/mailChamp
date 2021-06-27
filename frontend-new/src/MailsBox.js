@@ -19,7 +19,7 @@ const MailsBox = () => {
     const classes=useStyles();
     const [recMails,setRecMails]=useState([]);
     useEffect(()=>{
-        axios.get("http://localhost:3007/auth/getRecurringMails/60d5981f4d6bb9419ccc539d").then((res)=>{
+        axios.get("https://nodejs-mailchamp-2233.herokuapp.com/auth/getRecurringMails/60d5981f4d6bb9419ccc539d").then((res)=>{
             console.log("mails",res.data.data);
             let {prev,future}=calculate(res.data.data,9000);
             console.log("calculate",prev,future);

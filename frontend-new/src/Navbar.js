@@ -39,7 +39,7 @@ const Navbar = () => {
        <Box className="navbar" component="div" display="flex" alignItems="center" justifyContent="space-between">
            <ul className="navbar__list">
                <li className="navbar__item">
-                   <Link to="" className="navbar__link">Home</Link>
+                   <Link to="/" className="navbar__link">Home</Link>
                </li>
                <li className="navbar__item">
                    <Link to="history" className="navbar__link">History</Link>
@@ -47,7 +47,7 @@ const Navbar = () => {
            </ul>
            <Box component="div" display="flex" alignItems="center">
              <Typography variant="h6" className="navbar__user">
-                 <AccountCircleIcon className={classes.icon}/>{user}
+                 <AccountCircleIcon className={classes.icon}/>{user?user:"Should login"}
              </Typography>
              <Button className={classes.button} onClick={logoutHandler}>Logout</Button>
            </Box>
