@@ -1,0 +1,71 @@
+body {
+    background-color: #171717;
+    /* background-color: #DA0037; */
+    text-align: center;
+    margin: auto;
+  }
+.card-container{
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+  .card {
+    text-align: center;
+    width: 30%;
+  }
+  .card-body {
+    background-color: #ededed;
+  
+    /* background-color: #171717;
+    background-color: #444444; */
+    /* color: #EDEDED; */
+    /* opacity: 0.75; */
+  }
+  .signup {
+    padding-top: 10%;
+    font-size: small;
+  }
+  .loginBtn {
+    text-align: center;
+    margin: auto;
+    background-color: #da0037;
+  }
+  .or {
+    padding-top: 0%;
+  }
+  .googleBtn {
+    text-align: center;
+    margin: auto;
+  }
+  @media (max-width: 1110px) {
+    .card {
+      width: 50%;
+    }
+  }
+  
+  .createBtn {
+    padding-top: 5%;
+  }
+  /* .createBody {
+    padding-top: 5%;
+    width: 50%;
+    text-align: center!important;
+    color: #ededed;
+  } */
+  /* .divider {
+    border: solid #ededed 1px;
+    border-bottom: 0;
+    border-right: 0;
+    border-left: 0;
+  } */
+  .list {
+    /* color: #ededed; */
+    color: #da0037;
+    text-align: center;
+    margin: auto;
+  }
+  /* .paper {
+    height: 200px;
+    width: 200px;
+  } */

@@ -1,0 +1,46 @@
+.navbar{
+    margin-top: 0px;
+    height: 70px;
+    width: 100%;
+    background-color:rgba(0,0,0,0.1);
+    padding: 0px 100px;
+    box-shadow: 0 5px 8px rgba(0,0,0,0.5);
+}
+.navbar__list{
+    list-style-type: none;
+    display: flex;
+}
+.navbar__item{
+    margin-right: 30px;
+}
+.navbar__link:link,.navbar__link:visited{
+    text-decoration: none;
+    color:#ededed;
+    font-size:20px ;
+    text-transform: uppercase;
+}
+.navbar__link:hover,.navbar__link:active{
+    text-decoration: none;
+    color: #da0037;
+}
+.navbar__user{
+    color: #ededed;
+    display: flex;
+    align-items: center;
+}
+.navbar__user:hover{
+    color: #da0037;
+}
+.repeats{
+    font-weight: bold;
+}
+.text{
+    margin-bottom: 10px;
+    text-align: start;
+}
+.text__name{
+    font-weight: bold;
+}
+.message{
+    text-align: justify;
+}
